@@ -1,12 +1,15 @@
 package com.revature.map;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-class LiamMapper extends Mapper<Text, Text, Text, Text> {
+public class LiamMapper extends Mapper<Text, IntWritable, Text, IntWritable> {
 
     /*
      * The map method runs once for each line of text in the input file. The method
@@ -14,7 +17,7 @@ class LiamMapper extends Mapper<Text, Text, Text, Text> {
      * object.
      */
     @Override
-    public void map(Text key, Text value, Context context) throws IOException, InterruptedException {
+    public void map(Text key, IntWritable value, Context context) throws IOException, InterruptedException {
 
         /*
          * Convert the line, which is received as a Text object, to a String object.
@@ -24,19 +27,13 @@ class LiamMapper extends Mapper<Text, Text, Text, Text> {
         /*
          * The line.split("\\W+") call uses regular expressions to split the line up by
          * non-word characters.
-         * 
-         * If you are not familiar with the use of regular expressions in Java code,
-         * search the web for "Java Regex Tutorial."
          */
-        for (String word : line.split("\\W+")) {
-            if (word.length() > 0) {
-
-                /*
-                 * Call the write method on the Context object to emit a key and a value from
-                 * the map method.
-                 */
-                context.write(new Text(word), new IntWritable(1));
-            }
+        for (String word : line.split(",")) {
+           BufferedWriter writer = new BufferedWriter( new FileWriter(new File("src/input/inter.txt")));
+            		 context.write(new Text(word), new IntWritable(1));
+            	
+               
+            
         }
     }
 

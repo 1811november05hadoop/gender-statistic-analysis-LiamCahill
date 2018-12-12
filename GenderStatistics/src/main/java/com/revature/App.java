@@ -1,21 +1,24 @@
 package com.revature;
 
-import java.nio.file.Path;
+import com.revature.map.LiamMapper;
+import com.revature.reducer.LiamReducer;
 
-/**
- * Hello world!
- */
+import org.apache.hadoop.mapreduce.Job;
+
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+
+
+
+
 public final class App {
-    private App() {
-    }
 
-    /**
-     * Says hello to the world.
-     * @param args The arguments of the program.
-     */
-    public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
-        
+
 		/*
 		 * The expected command-line arguments are the paths containing
 		 * input and output data. Terminate the job if the number of
@@ -43,7 +46,7 @@ public final class App {
 		 * Specify an easily-decipherable name for the job.
 		 * This job name will appear in reports and logs.
 		 */
-		job.setJobName("Word Count");
+		job.setJobName("Countries with female graduation rates > 30 percent.");
 
 		/*
 		 * Specify the paths to the input and output data based on the
@@ -55,8 +58,12 @@ public final class App {
 		/*
 		 * Specify the mapper and reducer classes.
 		 */
+
 		job.setMapperClass(LiamMapper.class);
 		job.setReducerClass(LiamReducer.class);
+
+		//job.setMapperClass(LiamMapper.class);
+		//job.setReducerClass(LiamReducer.class);
 
 		/*
 		 * For the word count application, the input file and output 
@@ -93,7 +100,5 @@ public final class App {
 		boolean success = job.waitForCompletion(true);
 		System.exit(success ? 0 : 1);
 	}
-
-        
-    }
 }
+
