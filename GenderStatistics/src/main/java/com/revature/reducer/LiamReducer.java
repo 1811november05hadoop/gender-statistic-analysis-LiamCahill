@@ -23,6 +23,5 @@ public class LiamReducer extends Reducer<Text, DoubleWritable, Text, DoubleWrita
 		if(average > 30){
 			context.write(key, new DoubleWritable(average));
 		}
-
 	}
 }
