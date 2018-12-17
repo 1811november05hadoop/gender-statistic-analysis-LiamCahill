@@ -11,9 +11,6 @@ import com.revature.map.MapperQuestion5;
 import com.revature.reducer.ReducerQuestion5;
 
 
-
-
-
 public final class Question5Driver {
 
 	public static void main(String[] args) throws Exception {
