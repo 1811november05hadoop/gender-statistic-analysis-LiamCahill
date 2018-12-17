@@ -7,22 +7,18 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-import com.revature.map.LiamMapper;
-import com.revature.map.MapperQuestion2;
-import com.revature.map.MapperQuestion3;
-import com.revature.reducer.LiamReducer;
-import com.revature.reducer.ReducerQuestion2;
-import com.revature.reducer.ReducerQuestion3;
+import com.revature.map.MapperQuestion5;
+import com.revature.reducer.ReducerQuestion5;
 
 
 
 
-public final class Question3Driver {
+
+public final class Question5Driver {
 
 	public static void main(String[] args) throws Exception {
 
 
-		
 		if (args.length != 2) {
 			System.out.printf(
 					"Usage: WordCount <input dir> <output dir>\n");
@@ -33,25 +29,25 @@ public final class Question3Driver {
 		Job job = new Job();
 
 		
-		job.setJarByClass(Question3Driver.class);
+		job.setJarByClass(Question5Driver.class);
 
 		
-		job.setJobName("Average % change in male employment");
+		job.setJobName("Average % change in female age at first marriage.");
 
 		
 		FileInputFormat.setInputPaths(job, new Path(args[0]));
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
 		
-		job.setMapperClass(MapperQuestion3.class);
-		job.setReducerClass(ReducerQuestion3.class);
+
+		job.setMapperClass(MapperQuestion5.class);
+		job.setReducerClass(ReducerQuestion5.class);
 		
 		
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(DoubleWritable.class);
 		
-		
-		
+	
 		boolean success = job.waitForCompletion(true);
 		System.exit(success ? 0 : 1);
 	}
