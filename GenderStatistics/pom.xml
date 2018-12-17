@@ -6,7 +6,7 @@
     <version>1.0-SNAPSHOT</version>
     <!-- Change name of jar to keep it simple -->
     <build>
-        <finalName>WordCount</finalName>
+        <finalName>GenderStats</finalName>
     </build>
 
     <!-- Make project Java 8 -->

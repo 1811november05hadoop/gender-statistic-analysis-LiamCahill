@@ -1,15 +1,14 @@
 package com.revature;
 
-import com.revature.map.LiamMapper;
-import com.revature.reducer.LiamReducer;
-
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.DoubleWritable;
+import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
-
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.IntWritable;
-import org.apache.hadoop.io.Text;
+
+import com.revature.map.LiamMapper;
+import com.revature.reducer.LiamReducer;
 
 
 
@@ -62,9 +61,7 @@ public final class App {
 		job.setMapperClass(LiamMapper.class);
 		job.setReducerClass(LiamReducer.class);
 
-		//job.setMapperClass(LiamMapper.class);
-		//job.setReducerClass(LiamReducer.class);
-
+	
 		/*
 		 * For the word count application, the input file and output 
 		 * files are in text format - the default format.
@@ -91,8 +88,9 @@ public final class App {
 		 * Specify the job's output key and value classes.
 		 */
 		job.setOutputKeyClass(Text.class);
-		job.setOutputValueClass(IntWritable.class);
-
+		job.setOutputValueClass(DoubleWritable.class);
+		
+		
 		/*
 		 * Start the MapReduce job and wait for it to finish.
 		 * If it finishes successfully, return 0. If not, return 1.
