@@ -25,9 +25,10 @@ public class MapperQuestion2 extends Mapper<LongWritable, Text, Text, DoubleWrit
 		 * Convert the line, which is received as a Text object, to a String object.
 		 */
 		String line = value.toString();
+		
+		//&& line.contains("United States")
 
-
-		if(line.contains("Educational attainment") && line.contains("SE.SEC.HIAT.UP.FE.ZS") && line.contains("United States")) {
+		if(line.contains("Educational attainment") && line.contains("SE.SEC.HIAT.UP.FE.ZS")) {
 			String[] fields = line.split(",");
 			String country = fields[0];
 			
