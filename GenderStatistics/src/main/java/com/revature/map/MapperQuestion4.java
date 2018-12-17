@@ -11,13 +11,13 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-public class MapperQuestion3 extends Mapper<LongWritable, Text, Text, DoubleWritable> {
+public class MapperQuestion4 extends Mapper<LongWritable, Text, Text, DoubleWritable> {
 
 	@Override
 	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
 		String line = value.toString();
 
-		if(line.contains("SL.UEM.TOTL.MA.NE.ZS") && line.contains("United States")) {
+		if(line.contains("SL.UEM.TOTL.FE.NE.ZS") && line.contains("United States")) {
 			String[] fields = line.split(",");
 			String country = fields[0];
 
